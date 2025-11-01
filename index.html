@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Search Engine</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            transition: background-image 0.5s ease;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 100px;
+        }
+
+        input {
+            width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(3, 85, 14);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(5, 110, 20);
+        }
+
+        .results {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .result-item {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f0f0f0;
+            border-left: 4px solid rgb(179, 255, 0);
+            cursor: pointer;
+        }
+
+        .result-item:hover {
+            background-color: #e0e0e0;
+        }
+
+        a {
+            font-size: 30px;
+            color: beige;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+            margin: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .link {
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Liquid keyword box */
+        .keyword-box {
+            position: fixed;
+            right: 20px;
+            top: 120px;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+        }
+
+        .keyword-box h3 {
+            color: beige;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .keyword-item {
+            background: rgba(255, 255, 255, 0.15);
+            color: beige;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-left: 3px solid rgb(179, 255, 0);
+            text-align: center;
+        }
+
+        .keyword-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="link">
+        <a href="index.html">HOME</a>
+    </div>
+
+    <!-- Keyword / Navigation Box -->
+    <div class="keyword-box">
+        <h3>Explore</h3>
+        <div class="keyword-item" onclick="openPage('shop.html')">🛍️ Shop</div>
+        <div class="keyword-item" onclick="openPage('countries.html')">🌍 Countries Info</div>
+        <div class="keyword-item" onclick="openPage('news.html')">📰 Local News</div>
+        <div class="keyword-item" onclick="openPage('contact.html')">📞 Contact Us</div>
+    </div>
+
+    <div class="search-container">
+        <h1>WGC Search Engine</h1>
+        <input type="text" id="searchInput" placeholder="Search for files...">
+        <button onclick="search()">Search</button>
+    </div>
+
+    <div id="results" class="results"></div>
+
+    <script>
+        // File list for search
+        const files = [
+            { name: "index.html", path: "index.html", description: "Main HTML file" },
+            { name: "style.css", path: "style.css", description: "CSS stylesheet" },
+            { name: "script.js", path: "script.js", description: "JavaScript file" },
+            { name: "shop.html", path: "shop.html", description: "Online shop page" },
+            { name: "countries.html", path: "countries.html", description: "Country information page" },
+            { name: "background.gif", path: "background.gif", description: "Background image" },
+            { name: "README.md", path: "README.md", description: "Documentation" }
+        ];
+
+        // Background images
+        const backgroundImages = [
+            "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg",
+            "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg",
+            "image9.jpg","image10.jpg","image11.jpg","image12.jpg",
+            "image13.jpg","image14.jpg", "image15.jpg", "image16.jpg", "image17.jpg",
+            "image18.jpg", "image19.jpg", "image20.jpg", "image21.jpg",
+            "image22.jpg","image23.jpg","image24.jpg","image25.jpg",
+
+        ];
+
+        // Random background
+        function setRandomBackground() {
+            const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+            document.body.style.backgroundImage = `url('${randomImage}')`;
+        }
+        setRandomBackground();
+
+        // Search function
+        function search() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            if (query.trim() === "") {
+                resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
+                return;
+            }
+
+            const results = files.filter(file =>
+                file.name.toLowerCase().includes(query) ||
+                file.description.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = "<p>No matching files found.</p>";
+                return;
+            }
+
+            results.forEach(file => {
+                const item = document.createElement("div");
+                item.className = "result-item";
+                item.innerHTML = `<strong>${file.name}</strong><br>${file.description}`;
+                item.onclick = () => window.location.href = file.path;
+                resultsDiv.appendChild(item);
+            });
+        }
+
+        // Open keyword-linked pages
+        function openPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            transition: background-image 0.5s ease;
+            color: beige;
+        }
+
+        .link {
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        a {
+            font-size: 30px;
+            color: beige;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+            margin: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .content-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 3px solid rgb(179, 255, 0);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="link">
+        <a href="index.html">🏠 HOME</a>
+    </div>
+
+    <div class="content-box">
+        <h1>🛍️ Welcome to the Shop</h1>
+        <p>Browse some of our featured items below:</p>
+
+        <div class="product">
+            <h3>Stylish Smartwatch</h3>
+            <p>Track fitness, calls, and more — all in one wearable device.</p>
+        </div>
+
+        <div class="product">
+            <h3>Wireless Earbuds</h3>
+            <p>Experience premium sound without the wires.</p>
+        </div>
+
+        <div class="product">
+            <h3>Custom Keychains</h3>
+            <p>Personalized metal and resin designs available.</p>
+        </div>
+    </div>
+
+    <script>
+        const backgroundImages = [
+            "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg",
+            "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg"
+        ];
+        function setRandomBackground() {
+            const random = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+            document.body.style.backgroundImage = `url('${random}')`;
+        }
+        setRandomBackground();
+    </script>
+</body>
+</html>

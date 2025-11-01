@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chile - Country Information</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: beige;
+      transition: background-image 0.5s ease;
+      overflow-y: auto;
+    }
+
+    .link {
+      text-align: left;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    a {
+      font-size: 30px;
+      color: beige;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 20px;
+      margin: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a:hover {
+      color: rgb(179, 255, 0);
+    }
+
+    .content-box {
+      margin: 120px auto 60px auto;
+      width: 85%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 30px;
+      font-size: 36px;
+    }
+
+    .flag {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      margin: 15px 0;
+      padding: 20px;
+      transition: all 0.3s ease;
+      border-left: 4px solid rgb(179, 255, 0);
+    }
+
+    .section:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: rgb(179, 255, 0);
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="link">
+    <a href="index.html">🏠 HOME</a>
+    <a href="countries.html">🌍 COUNTRIES</a>
+    <a href="shop.html">🛍 SHOP</a>
+  </div>
+
+  <div class="content-box">
+    <h1>🇨🇱 Chile</h1>
+    <img src="flags/flat-chile-flag-showing-white-star-blue-canton-red-stripe-transparent-background-vintage-patriotic-symbolic-minimalist-390663966.webp" alt="Chile Flag" class="flag">
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>Chile is a long, narrow country stretching along South America's western edge, with more than 6,000 km of Pacific Ocean coastline. It’s known for its diverse geography, from the Atacama Desert in the north to glaciers and fjords in the south.</p>
+    </div>
+
+    <div class="section">
+      <h2>Population</h2>
+      <p>As of 2025, Chile’s population is estimated at around <strong>19.5 million</strong>. The country is urbanized, with most people living in and around the capital city, Santiago.</p>
+    </div>
+
+    <div class="section">
+      <h2>Economy</h2>
+      <p>Chile has one of the most stable and prosperous economies in South America. It’s a major exporter of <strong>copper, wine, and fruits</strong>. The country’s strong institutions and open trade policies make it a regional economic leader.</p>
+    </div>
+
+    <div class="section">
+      <h2>Culture</h2>
+      <p>Chilean culture blends indigenous traditions with Spanish influences. Folk music, dance (especially the national dance “Cueca”), and festivals like <strong>Fiestas Patrias</strong> play key roles in its national identity.</p>
+    </div>
+
+    <div class="section">
+      <h2>Tourism & Landmarks</h2>
+      <p>Top tourist spots include <strong>Atacama Desert</strong>, <strong>Torres del Paine National Park</strong>, <strong>Easter Island (Rapa Nui)</strong>, and <strong>Valparaíso</strong>. Chile is also famous for its astronomy observatories and wine regions.</p>
+    </div>
+  </div>
+
+  <script>
+    const backgroundImages = [
+      "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg",
+      "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg"
+    ];
+    function setRandomBackground() {
+      const random = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+      document.body.style.backgroundImage = `url('${random}')`;
+    }
+    setRandomBackground();
+  </script>
+</body>
+</html>
