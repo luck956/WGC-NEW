@@ -126,12 +126,12 @@
         }
     </style>
 </head>
-<body>
+<body onload="checkPassword(luck)">
     <div class="link">
         <a href="index.html">HOME</a>
     </div>
 
-    <!-- Keyword / Navigation Box -->
+    <!--  Box -->
     <div class="keyword-box">
         <h3>Explore</h3>
         <div class="keyword-item" onclick="openPage('shop.html')">🛍️ Shop</div>
@@ -212,6 +212,19 @@
         function openPage(page) {
             window.location.href = page;
         }
+        // Add this at the top of your index.html
+function checkPassword() {
+  const correctPassword = "luck";
+  const userPassword = prompt("Enter password:");
+  
+  if (userPassword !== correctPassword) {
+    alert("Incorrect password!");
+    window.location.href = "about:blank"; // or redirect elsewhere
+  }
+}
+
+// Call this when the page loads
+window.onload = checkPassword;
     </script>
 </body>
 </html>
