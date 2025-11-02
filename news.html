@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            transition: background-image 0.5s ease;
+            color: beige;
+        }
+
+        .link {
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        a {
+            font-size: 30px;
+            color: beige;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+            margin: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .content-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 3px solid rgb(179, 255, 0);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .author {
+            font-size: 14px;
+            color: rgb(200, 255, 200);
+            margin-top: 5px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="link">
+        <a href="index.html">🏠 HOME</a>
+    </div>
+
+    <div class="content-box">
+        <h1>📰 Latest News</h1>
+        <p>Here are the most recent updates:</p>
+
+        <div class="product">
+            <h3>Udirna is Obese</h3>
+            <p>This story explores the recent developments about Udirna’s health and lifestyle changes.</p>
+            <p class="author">Written by Sanim</p>
+        </div>
+    </div>
+
+    <script>
+        const backgroundImages = [
+            "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg",
+            "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg",
+            "image9.jpg", "image10.jpg", "image11.jpg", "image12.jpg",
+            "image13.jpg", "image14.jpg", "image15.jpg", "image16.jpg",
+            "image17.jpg", "image18.jpg", "image19.jpg", "image20.jpg",
+            "image21.jpg", "image22.jpg", "image23.jpg", "image24.jpg", "image25.jpg"
+        ];
+
+        function setRandomBackground() {
+            const random = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+            document.body.style.backgroundImage = `url('${random}')`;
+        }
+
+        setRandomBackground();
+    </script>
+</body>
+</html>
