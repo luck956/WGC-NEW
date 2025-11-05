@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Germany - Country Information</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: beige;
+      transition: background-image 0.5s ease;
+      overflow-y: auto;
+    }
+
+    .link {
+      text-align: left;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    a {
+      font-size: 30px;
+      color: beige;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 20px;
+      margin: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a:hover {
+      color: rgb(179, 255, 0);
+    }
+
+    .content-box {
+      margin: 120px auto 60px auto;
+      width: 85%;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    }
+    .disclaimer {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      padding: 15px;
+      margin-top: 40px;
+      background: rgba(0, 0, 0, 0.4);
+      color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+
+    .disclaimer p {
+      margin: 0;
+      font-style: italic;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 30px;
+      font-size: 36px;
+    }
+
+    .flag {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      margin: 15px 0;
+      padding: 20px;
+      transition: all 0.3s ease;
+      border-left: 4px solid rgb(179, 255, 0);
+    }
+
+    .section:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      font-size: 22px;
+      color: rgb(179, 255, 0);
+    }
+
+    .section p {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="link">
+    <a href="index.html">🏠 HOME</a>
+    <a href="countries.html">🌍 COUNTRIES</a>
+    <a href="shop.html">🛍 SHOP</a>
+  </div>
+
+  <div class="content-box">
+    <h1>🇩🇪 Germany</h1>
+    <img src="german.webp" alt="Germany Flag" class="flag">
+
+    <div class="section">
+      <h2>Overview</h2>
+      <p>Germany is a central European country known for its rich history, advanced economy, and cultural influence. It’s bordered by nine countries and features a diverse landscape of forests, mountains, rivers, and cities blending old-world charm with modern innovation.</p>
+    </div>
+
+    <div class="section">
+      <h2>Population</h2>
+      <p>As of 2025, Germany’s population is estimated at around <strong>84 million</strong>, making it the most populous country in the European Union. Major cities include <strong>Berlin</strong>, <strong>Munich</strong>, <strong>Hamburg</strong>, and <strong>Frankfurt</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2>Economy</h2>
+      <p>Germany has Europe’s largest economy and is a global leader in <strong>engineering, manufacturing, and technology</strong>. It’s home to major industries like automobiles, machinery, chemicals, and renewable energy. Companies like <strong>Volkswagen</strong>, <strong>Siemens</strong>, and <strong>BASF</strong> are internationally recognized.</p>
+    </div>
+
+    <div class="section">
+      <h2>Culture</h2>
+      <p>German culture is known for its contributions to <strong>philosophy, music, literature, and science</strong>. Classical composers like <strong>Beethoven</strong> and <strong>Bach</strong> originated here. German festivals such as <strong>Oktoberfest</strong> and <strong>Christmas markets</strong> attract millions of visitors annually.</p>
+    </div>
+
+    <div class="section">
+      <h2>Tourism & Landmarks</h2>
+      <p>Famous landmarks include <strong>Brandenburg Gate</strong>, <strong>Neuschwanstein Castle</strong>, <strong>Cologne Cathedral</strong>, and the <strong>Berlin Wall Memorial</strong>. The <strong>Black Forest</strong> and <strong>Bavarian Alps</strong> offer stunning natural beauty, while cities like <strong>Munich</strong> and <strong>Berlin</strong> showcase modern art and nightlife.</p>
+    </div>
+  </div>
+
+  <script>
+    const backgroundImages = [
+      "germany1.jpg", "germany2.jpg", "germany3.jpg", "germany4.jpg",
+      "germany5.jpg", "germany6.jpg", "germany7.jpg", "germany8.jpg",
+      "germany9.webp", "germany10.jpg", "germany11.jpg", "germany12.jpg",
+      "germany13.jpg", "germany14.jpg", "germany15.jpg", "germany16.jpg",
+      "germany17.jpg", "germany18.jpg", "germany19.jpg", "germany20.jpg"
+    ];
+
+    function setRandomBackground() {
+      const random = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+      document.body.style.backgroundImage = `url('${random}')`;
+    }
+
+    setRandomBackground();
+  </script>
+    <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> The information presented on this page is for <em>educational and illustrative purposes only</em>. It does not reflect real-world data, events, or entities. Any similarities to actual persons, countries, or facts are purely coincidental.</p>
+  </div>
+
+</body>
+</html>
