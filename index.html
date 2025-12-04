@@ -119,13 +119,16 @@
             overflow: hidden;
             z-index: 2000;
             box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+            background: #000; /* fallback */
         }
         .globe {
             width: 200%;
             height: 100%;
             background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_shallow_topo_2048.jpg');
             background-size: cover;
-            animation: spinEarth 10s linear infinite;
+            background-position: center;
+            border-radius: 50%;
+            animation: spinEarth 20s linear infinite; /* smooth rotation */
         }
         @keyframes spinEarth {
             from { transform: translateX(0); }
@@ -260,7 +263,7 @@
             window.location.href = page;
         }
 
-        // Background: only pick one randomly on load (no refresh)
+        // Background: pick one randomly ONCE (no refresh)
         const backgroundImages = [
             "image1.jpg","image2.jpg","image3.jpg","image4.jpg",
             "image5.jpg","image6.jpg","image7.jpg","image8.jpg",
