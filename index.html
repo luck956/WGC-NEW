@@ -4,42 +4,39 @@
     <meta charset="UTF-8">
     <title>Local Search Engine</title>
     <style>
+        /* Fade-in effect */
         body {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-body.fade-in {
-    opacity: 1;
-}
-
-        .leave-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px; /* <-- moved from left to right */
-    background-color: red;
-    color: white;
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    z-index: 2000;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.leave-btn:hover {
-    background-color: darkred;
-}
-
-        body {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
             margin: 0;
             padding: 0;
             height: 100vh;
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
-            transition: background-image 0.5s ease;
+        }
+        body.fade-in {
+            opacity: 1;
+        }
+
+        /* Leave button */
+        .leave-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 2000;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .leave-btn:hover {
+            background-color: darkred;
         }
 
         .search-container {
@@ -65,7 +62,6 @@ body.fade-in {
             border-radius: 5px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: rgb(5, 110, 20);
         }
@@ -87,7 +83,6 @@ body.fade-in {
             border-left: 4px solid rgb(179, 255, 0);
             cursor: pointer;
         }
-
         .result-item:hover {
             background-color: #e0e0e0;
         }
@@ -112,52 +107,32 @@ body.fade-in {
             width: 100%;
             z-index: 1000;
         }
-.globe-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    overflow: hidden;
-    z-index: 2000;
-}
 
-.globe {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #3bc9ff, #005a9e);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
-}
+        /* REAL ROTATING EARTH */
+        .globe-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 2000;
+            box-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+        }
+        .globe {
+            width: 200%;
+            height: 100%;
+            background-image: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_shallow_topo_2048.jpg');
+            background-size: cover;
+            animation: spinEarth 10s linear infinite;
+        }
+        @keyframes spinEarth {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
 
-/* Simulated continents (CSS-generated shapes) */
-.globe::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 300%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.3) 0px,
-        rgba(255,255,255,0.3) 20px,
-        rgba(0,0,0,0) 20px,
-        rgba(0,0,0,0) 40px
-    );
-    animation: rotate 6s linear infinite;
-}
-
-/* Rotation animation */
-@keyframes rotate {
-    from { transform: translateX(0); }
-    to { transform: translateX(-33%); }
-}
-
-        /* Liquid keyword box */
+        /* Keyword box */
         .keyword-box {
             position: fixed;
             right: 20px;
@@ -191,19 +166,17 @@ body.fade-in {
             border-left: 3px solid rgb(179, 255, 0);
             text-align: center;
         }
-
         .keyword-item:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateX(5px);
         }
     </style>
 </head>
-<body onload="checkPassword(luck)">
+<body>
     <div class="link">
         <a href="index.html">HOME</a>
     </div>
 
-    <!--  Box -->
     <div class="keyword-box">
         <h3>Explore</h3>
         <div class="keyword-item" onclick="openPage('shop.html')">🛍️ Shop</div>
@@ -219,78 +192,47 @@ body.fade-in {
     </div>
 
     <div id="results" class="results"></div>
-<button class="leave-btn" onclick="leaveSite()">Leave</button>
-<div class="globe-container">
-    <div class="globe"></div>
-</div>
+    <button class="leave-btn" onclick="leaveSite()">Leave</button>
+
+    <!-- Real rotating Earth -->
+    <div class="globe-container">
+        <div class="globe"></div>
+    </div>
 
     <script>
-       function leaveSite() {
-    window.location.href = "about:blank";
-}
-
-        // File list for search
-        const files = [
-    { name: "index.html", path: "index.html", description: "Main HTML file" },
-    { name: "style.css", path: "style.css", description: "CSS stylesheet" },
-    { name: "script.js", path: "script.js", description: "JavaScript file" },
-    { name: "shop.html", path: "shop.html", description: "Online shop page" },
-    { name: "countries.html", path: "countries.html", description: "Country information page" },
-    { name: "background.gif", path: "background.gif", description: "Background image" },
-    { name: "README.md", path: "README.md", description: "Documentation" },
-    { name: "motu.jpg", path: "motu.jpg", description: "chaka" }
-];
-
-
-        // Background images
-       // Background images
-const backgroundImages = [
-    "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg",
-    "image5.jpg", "image6.jpg", "image7.jpg", "image8.jpg",
-    "image9.jpg","image10.jpg","image11.jpg","image12.jpg",
-    "image13.jpg","image14.jpg", "image15.jpg", "image16.jpg", "image17.jpg",
-    "image18.jpg", "image19.jpg", "image20.jpg", "image21.jpg",
-    "image22.jpg","image23.jpg","image24.jpg","image25.jpg",
-];
-
-// Smooth background change with fade effect
-function changeBackground() {
-    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
-
-    // Step 1: Fade out
-    document.body.classList.remove("fade-in");
-
-    setTimeout(() => {
-        // Step 2: Change background
-        document.body.style.backgroundImage = `url('${randomImage}')`;
-
-        // Step 3: Fade back in
-        setTimeout(() => {
-            document.body.classList.add("fade-in");
-        }, 50);
-    }, 500);
-}
-
-// Start background on load
-window.addEventListener("load", () => {
-    changeBackground(); // first image
-    setInterval(changeBackground, 10000); // change every 10 seconds
-});
-
-        // Random background
-        function setRandomBackground() {
-            const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
-            document.body.style.backgroundImage = `url('${randomImage}')`;
+        // Leave site
+        function leaveSite() {
+            window.location.href = "about:blank";
         }
-        setRandomBackground();
 
-        // Search function
+        // Password check
+        function checkPassword() {
+            const correctPassword = "luck";
+            const userPassword = prompt("Enter password:");
+            if (userPassword !== correctPassword) {
+                alert("Incorrect password!");
+                window.location.href = "about:blank";
+            }
+        }
+
+        // File search
+        const files = [
+            { name: "index.html", path: "index.html", description: "Main HTML file" },
+            { name: "style.css", path: "style.css", description: "CSS stylesheet" },
+            { name: "script.js", path: "script.js", description: "JavaScript file" },
+            { name: "shop.html", path: "shop.html", description: "Online shop page" },
+            { name: "countries.html", path: "countries.html", description: "Country information page" },
+            { name: "background.gif", path: "background.gif", description: "Background image" },
+            { name: "README.md", path: "README.md", description: "Documentation" },
+            { name: "motu.jpg", path: "motu.jpg", description: "chaka" }
+        ];
+
         function search() {
             const query = document.getElementById("searchInput").value.toLowerCase();
             const resultsDiv = document.getElementById("results");
             resultsDiv.innerHTML = "";
 
-            if (query.trim() === "") {
+            if (!query.trim()) {
                 resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
                 return;
             }
@@ -314,26 +256,31 @@ window.addEventListener("load", () => {
             });
         }
 
-        // Open keyword-linked pages
         function openPage(page) {
             window.location.href = page;
         }
-        // Add this at the top of your index.html
-function checkPassword() {
-  const correctPassword = "luck";
-  const userPassword = prompt("Enter password:");
-  
-  if (userPassword !== correctPassword) {
-    alert("Incorrect password!");
-    window.location.href = "about:blank"; // or redirect elsewhere
-  }
-}
 
-// Call this when the page loads
-window.onload = checkPassword;
+        // Background: only pick one randomly on load (no refresh)
+        const backgroundImages = [
+            "image1.jpg","image2.jpg","image3.jpg","image4.jpg",
+            "image5.jpg","image6.jpg","image7.jpg","image8.jpg",
+            "image9.jpg","image10.jpg","image11.jpg","image12.jpg",
+            "image13.jpg","image14.jpg","image15.jpg","image16.jpg",
+            "image17.jpg","image18.jpg","image19.jpg","image20.jpg",
+            "image21.jpg","image22.jpg","image23.jpg","image24.jpg","image25.jpg"
+        ];
+
+        function setRandomBackgroundOnce() {
+            const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+            document.body.style.backgroundImage = `url('${randomImage}')`;
+            document.body.classList.add("fade-in");
+        }
+
+        // On page load
+        window.onload = () => {
+            checkPassword();
+            setRandomBackgroundOnce();
+        };
     </script>
 </body>
 </html>
-
-
-
