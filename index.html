@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <title>Local Search Engine</title>
     <style>
+        .leave-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* <-- moved from left to right */
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 2000;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.leave-btn:hover {
+    background-color: darkred;
+}
+
         body {
             margin: 0;
             padding: 0;
@@ -147,8 +167,13 @@
     </div>
 
     <div id="results" class="results"></div>
+<button class="leave-btn" onclick="leaveSite()">Leave</button>
 
     <script>
+       function leaveSite() {
+    window.location.href = "about:blank";
+}
+
         // File list for search
         const files = [
             { name: "index.html", path: "index.html", description: "Main HTML file" },
@@ -158,6 +183,7 @@
             { name: "countries.html", path: "countries.html", description: "Country information page" },
             { name: "background.gif", path: "background.gif", description: "Background image" },
             { name: "README.md", path: "README.md", description: "Documentation" }
+            { name: "motu.jpg", path: "motu.jpg", description: "chaka" },
         ];
 
         // Background images
@@ -228,3 +254,4 @@ window.onload = checkPassword;
     </script>
 </body>
 </html>
+
